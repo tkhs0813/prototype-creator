@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { Dom } from "./types";
+import { ref, watch } from "vue";
+import { storeToRefs } from "pinia";
 import DomRenderer from "./components/DomRenderer.vue";
 import RootElementEditor from "./components/editor/Root.vue";
+import { useSelectedElement } from "./stores/selectedElement";
+import { flat } from "./utils/flat";
+import { Dom } from "./types";
+
+const store = useSelectedElement();
+const { selectedElement } = storeToRefs(store);
 
 const dom = ref<Dom>({
   id: "container-1",
@@ -65,7 +71,10 @@ const dom = ref<Dom>({
       <root-element-editor v-model:rootElement="dom" />
       <div class="selected-element-style">
         <h3>Selected Element Style</h3>
-        Please select element.
+        <div v-if="selectedElement">
+          <pre>{{ selectedElement }}</pre>
+        </div>
+        <div v-else>Please select element.</div>
       </div>
     </div>
   </div>

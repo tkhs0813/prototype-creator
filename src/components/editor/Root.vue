@@ -30,7 +30,7 @@ const handleInputStyle = (
 
 <template>
   <div class="root-element-editor">
-    <h3>Root Style</h3>
+    <h3>Root Element</h3>
     <label>
       ID:
       <input
