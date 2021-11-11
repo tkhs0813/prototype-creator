@@ -14,5 +14,5 @@ https://gyazo.com/bbb5bb72b78228ac216348f99bd06429
   * ルート部分をコンポーネント分割
   * クリックしたエレメントがわかるようにした
 * pinia 入れた
-* 
+
 https://gyazo.com/c5103578c982bedab576bd9d4d1948e6
