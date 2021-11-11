@@ -1,45 +1,42 @@
 <script setup lang="ts">
 import { ContainerDom, ContainerStyle } from "../../types";
 
-const props = defineProps<{ grobalElement: ContainerDom }>();
+const props = defineProps<{ rootElement: ContainerDom }>();
 const emit = defineEmits<{
-  (e: "update:grobalElement", value: ContainerDom): void;
+  (e: "update:rootElement", value: ContainerDom): void;
 }>();
 
 const handleInputAttribute = (
   attribute: keyof ContainerDom,
   e: { target: { value: string } }
 ) => {
-  const updatedElement = Object.assign(props.grobalElement, {
+  const updatedElement = Object.assign(props.rootElement, {
     id: e.target.value,
   });
-  emit("update:grobalElement", updatedElement);
+  emit("update:rootElement", updatedElement);
 };
 
 const handleInputStyle = (
   style: keyof ContainerStyle,
   e: { target: { value: string } }
 ) => {
-  const updatedElementStyle = Object.assign(props.grobalElement.style, {
+  const updatedElementStyle = Object.assign(props.rootElement.style, {
     [style]: e.target.value,
   });
-  const updatedElement = Object.assign(
-    props.grobalElement,
-    updatedElementStyle
-  );
-  emit("update:grobalElement", updatedElement);
+  const updatedElement = Object.assign(props.rootElement, updatedElementStyle);
+  emit("update:rootElement", updatedElement);
 };
 </script>
 
 <template>
-  <div class="grobal-element-editor">
-    <h3>Grobal Style</h3>
+  <div class="root-element-editor">
+    <h3>Root Style</h3>
     <label>
       ID:
       <input
         type="text"
         @input="handleInputAttribute('id', $event)"
-        :value="grobalElement.id"
+        :value="rootElement.id"
       />
     </label>
     <label>
@@ -47,7 +44,7 @@ const handleInputStyle = (
       <input
         type="text"
         @input="handleInputStyle('width', $event)"
-        :value="grobalElement.style.width"
+        :value="rootElement.style.width"
       />
     </label>
     <label>
@@ -55,7 +52,7 @@ const handleInputStyle = (
       <input
         type="text"
         @input="handleInputStyle('height', $event)"
-        :value="grobalElement.style.height"
+        :value="rootElement.style.height"
       />
     </label>
     <label>
@@ -63,7 +60,7 @@ const handleInputStyle = (
       <input
         type="text"
         @input="handleInputStyle('background', $event)"
-        :value="grobalElement.style.background"
+        :value="rootElement.style.background"
       />
     </label>
     <label>
@@ -71,7 +68,7 @@ const handleInputStyle = (
       <input
         type="text"
         @input="handleInputStyle('margin', $event)"
-        :value="grobalElement.style.margin"
+        :value="rootElement.style.margin"
       />
     </label>
     <label>
@@ -79,14 +76,14 @@ const handleInputStyle = (
       <input
         type="text"
         @input="handleInputStyle('padding', $event)"
-        :value="grobalElement.style.padding"
+        :value="rootElement.style.padding"
       />
     </label>
   </div>
 </template>
 
 <style scoped>
-.grobal-element-editor {
+.root-element-editor {
   display: flex;
   flex-direction: column;
 }

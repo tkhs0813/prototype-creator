@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { Dom } from "./types";
 import DomRenderer from "./components/DomRenderer.vue";
-import GlobalStyleEditor from "./components/editor/Global.vue";
+import RootElementEditor from "./components/editor/Root.vue";
 
 const dom = ref<Dom>({
   id: "container-1",
@@ -62,7 +62,7 @@ const dom = ref<Dom>({
       <dom-renderer :dom="dom" />
     </div>
     <div class="editor">
-      <global-style-editor v-model:grobalElement="dom" />
+      <root-element-editor v-model:rootElement="dom" />
       <div class="selected-element-style">
         <h3>Selected Element Style</h3>
         Please select element.
