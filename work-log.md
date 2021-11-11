@@ -11,8 +11,8 @@ https://gyazo.com/bbb5bb72b78228ac216348f99bd06429
 #### 2021/11/11: 
 
 * プロパティ部分ちょっと作った
-  * pinia 入れた
   * ルート部分をコンポーネント分割
   * クリックしたエレメントがわかるようにした
-
-https://gyazo.com/bbb5bb72b78228ac216348f99bd06429
+* pinia 入れた
+* 
+https://gyazo.com/c5103578c982bedab576bd9d4d1948e6
