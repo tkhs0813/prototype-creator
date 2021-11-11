@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import DomRenderer from "./components/DomRenderer.vue";
 import { Dom } from "./types";
-
-const style = ref({
-  width: "60px",
-  height: "60px",
-  background: "#DDD",
-});
+import DomRenderer from "./components/DomRenderer.vue";
+import GlobalStyleEditor from "./components/editor/Global.vue";
 
 const dom = ref<Dom>({
-  id: "div1",
+  id: "container-1",
   type: "container",
   style: {
     width: "100%",
@@ -21,18 +16,18 @@ const dom = ref<Dom>({
   },
   children: [
     {
-      id: "div2",
+      id: "container-2",
       type: "container",
       style: {
         width: "100%",
         height: "60px",
         background: "#333",
-        margin: "0",
+        margin: "10px",
         padding: "0",
       },
       children: [
         {
-          id: "input1",
+          id: "input-test-1",
           type: "input-text",
           style: {
             width: "400px",
@@ -44,7 +39,7 @@ const dom = ref<Dom>({
           children: [],
         },
         {
-          id: "input2",
+          id: "input-text-2",
           type: "input-text",
           style: {
             width: "100%",
@@ -67,30 +62,11 @@ const dom = ref<Dom>({
       <dom-renderer :dom="dom" />
     </div>
     <div class="editor">
-      <label>
-        ID:
-        <input type="text" v-model="dom.id" />
-      </label>
-      <label>
-        Width:
-        <input type="text" v-model="dom.style.width" />
-      </label>
-      <label>
-        Height:
-        <input type="text" v-model="dom.style.height" />
-      </label>
-      <label>
-        Background:
-        <input type="text" v-model="dom.style.background" />
-      </label>
-      <label>
-        Margin:
-        <input type="text" v-model="dom.style.margin" />
-      </label>
-      <label>
-        Padding:
-        <input type="text" v-model="dom.style.padding" />
-      </label>
+      <global-style-editor v-model:grobalElement="dom" />
+      <div class="selected-element-style">
+        <h3>Selected Element Style</h3>
+        Please select element.
+      </div>
     </div>
   </div>
 </template>
@@ -114,6 +90,11 @@ body {
 .editor {
   margin-left: auto;
   width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.grobal-style {
   display: flex;
   flex-direction: column;
 }
